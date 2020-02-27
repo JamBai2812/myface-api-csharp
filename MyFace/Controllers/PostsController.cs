@@ -32,7 +32,7 @@ namespace MyFace.Controllers
         }
 
         [HttpPost("create")]
-        public IActionResult CreatePost(CreatePostRequestModel newPost)
+        public IActionResult CreatePost([FromBody] CreatePostRequestModel newPost)
         {
             if (!ModelState.IsValid)
             {
@@ -41,10 +41,9 @@ namespace MyFace.Controllers
             
             var post = _posts.CreatePost(newPost);
 
-            var url = Url.Action("PostDetails", post.Id);
+            var url = Url.Action("PostDetails", new { id = post.Id });
             var postResponse = new PostResponseModel(post);
             return Created(url, postResponse);
-
         }
 
         [HttpPost("{id}/add-interaction")]

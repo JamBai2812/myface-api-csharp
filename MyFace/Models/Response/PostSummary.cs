@@ -12,7 +12,7 @@ namespace MyFace.Models.Response
             Post = post;
         }
         
-        public int Id => Post.Id;
+        public int Id => Post.Id;    
         public string Message => Post.Message;
         public string ImageUrl => Post.ImageUrl;
         public DateTime PostedAt => Post.PostedAt;
